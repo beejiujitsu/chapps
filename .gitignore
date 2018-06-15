@@ -1,1 +1,4 @@
+*.egg-info
 *.pyz
+build
+dist
