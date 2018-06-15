@@ -94,7 +94,7 @@ def test_goal(args, options):
 
 
 def main():
-  click.help()
+  list()
 
 
 if __name__ == '__main__':
