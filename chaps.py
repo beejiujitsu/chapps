@@ -11,7 +11,7 @@ back to calling pants directly if you need something else.
 
 from __future__ import absolute_import, print_function
 
-from chaps import lib
+import chaps_lib as lib
 
 import click
 
