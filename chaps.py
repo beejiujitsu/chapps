@@ -12,12 +12,13 @@ back to calling pants directly if you need something else.
 from __future__ import absolute_import, print_function
 
 from chaps import lib
-from twitter.common import app, log
+
+import click
 
 log.LogOptions().disable_disk_logging()
 
 
-@app.command(name="binary")
+@click.command(name="binary")
 def binary_goal(args):
   """Create a binary using pants."""
 
@@ -32,7 +33,7 @@ def binary_goal(args):
   lib.pants(pants_args)
 
 
-@app.command(name="fmt")
+@click.command(name="fmt")
 def fmt_goal(args):
   """Fix common format issues using pants fmt goal."""
 
@@ -47,7 +48,7 @@ def fmt_goal(args):
   lib.pants(pants_args)
 
 
-@app.command(name="list")
+@click.command(name="list")
 def list_goal():
   """List relative path pants targets."""
   path = lib.rel_cwd()
@@ -56,7 +57,7 @@ def list_goal():
   lib.pants_list(pants_args)
 
 
-@app.command(name="repl")
+@click.command(name="repl")
 def repl_goal(args):
   """Enter an ipython REPL."""
 
@@ -71,7 +72,7 @@ def repl_goal(args):
   lib.pants(pants_args)
 
 
-@app.command(name="run")
+@click.command(name="run")
 def run_goal(args):
   """Run a target using pants."""
 
@@ -89,9 +90,9 @@ def run_goal(args):
   lib.pants(pants_args)
 
 
-@app.command(name="clean")
-@app.command(name="clean-all")
-@app.command(name="wash")
+@click.command(name="clean")
+@click.command(name="clean-all")
+@click.command(name="wash")
 def clean_goal(args):
   """Clean pants."""
 
@@ -99,20 +100,20 @@ def clean_goal(args):
   lib.pants("clean-all")
 
 
-@app.command_option(
+@click.command_option(
   "--all", action="store_true", dest="all", default=False,
   help="Test all targets in path name similar to cwd.",
 )
-@app.command_option(
-  "--coverage", action="store_true", dest="coverage", default=False, help="Python test coverage.",
+@click.command_option(
+  "--coverage", action="store_true", default=False, help="Python test coverage.",
 )
-@app.command_option(
+@click.command_option(
   "--failfast", action="store_true", default=False, help="Python stop on first error.",
 )
-@app.command_option(
+@click.command_option(
   "--verbose", action="store_true", default=False, help="Python test verbosity.",
 )
-@app.command(name="test")
+@click.command(name="test")
 def test_goal(args, options):
   """Use test.pytest goal with pants."""
 
