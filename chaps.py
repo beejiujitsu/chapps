@@ -66,27 +66,16 @@ def run_goal(goal, args):
   lib.pants(pants_args)
 
 
-@click.command(name="clean")
 @click.command(name="clean-all")
-@click.command(name="wash")
 def clean_goal():
   """Clean pants."""
   lib.pants("clean-all")
 
 
-@click.command_option(
-  "--all", action="store_true", dest="all", default=False,
-  help="Test all targets in path name similar to cwd.",
-)
-@click.command_option(
-  "--coverage", action="store_true", default=False, help="Python test coverage.",
-)
-@click.command_option(
-  "--failfast", action="store_true", default=False, help="Python stop on first error.",
-)
-@click.command_option(
-  "--verbose", action="store_true", default=False, help="Python test verbosity.",
-)
+@click.option("--all", default=False, help="Test all targets in path name similar to cwd.")
+@click.option("--coverage", default=False, help="Python test coverage.")
+@click.option("--failfast", default=False, help="Python stop on first error.")
+@click.option("--verbose", default=False, help="Python test verbosity.")
 @click.command(name="test")
 def test_goal(args, options):
   """Use test.pytest goal with pants."""
@@ -102,3 +91,11 @@ def test_goal(args, options):
     targets,
   )
   lib.pants(pants_args)
+
+
+def main():
+  click.help()
+
+
+if __name__ == '__main__':
+  main()
