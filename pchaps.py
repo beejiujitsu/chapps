@@ -98,14 +98,14 @@ def cli():
   pass
 
 
+cli.add_command(binary_goal)
+cli.add_command(clean_goal)
+cli.add_command(fmt_goal)
+cli.add_command(list_goal)
+cli.add_command(repl_goal)
+cli.add_command(run_goal)
+cli.add_command(test_goal)
 
 
 if __name__ == '__main__':
-  cli.add_command(binary_goal)
-  cli.add_command(clean_goal)
-  cli.add_command(fmt_goal)
-  cli.add_command(list_goal)
-  cli.add_command(repl_goal)
-  cli.add_command(run_goal)
-  cli.add_command(test_goal)
   cli()
