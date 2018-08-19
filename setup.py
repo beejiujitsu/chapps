@@ -8,6 +8,6 @@ setup(
   py_modules=["pchaps", "chaps_lib"],
   install_requires=["Click", "sarge", ],
   entry_points={
-    "console_scripts": ["chaps=pchaps:cli"],
+    "console_scripts": ["pchaps=pchaps:cli"],
   }
 )
